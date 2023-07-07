@@ -54,7 +54,7 @@ class App(customtkinter.CTk):
         self.txt_temperatura_f.delete(0,999)
         self.txt_temperatura_f.insert(0,resultado_f)
 
-        alert("d",resultado_f)
+        alert("TP 2",resultado_f)
 
 
 
@@ -69,7 +69,7 @@ class App(customtkinter.CTk):
         self.txt_temperatura_c.delete(0,999)
         self.txt_temperatura_c.insert(0,resultado_c)
 
-        alert("g",resultado_c)
+        alert("TP 2",resultado_c)
     
     
 if __name__ == "__main__":
