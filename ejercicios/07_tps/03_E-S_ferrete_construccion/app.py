@@ -12,15 +12,15 @@ a la hora de realizar un alambrado permetral, se le solicita al usuario que ingr
 
     A. Informar los metros cuadrados del terreno y los metros lineales del perimetro
     B. Informar la cantidad de postes de quebracho Grueso de 2.4 mts (van cada 250 mts lineales y en las esquinas).
-    C. Informar la cantidad de postes de quebracho Fino de 2.2 mts (van cada 12 mts lineales, si en es lugar no se encuentra el poste grueso).
+    C. Informar la cantidad de postes de quebracho Fino de 2.2 mts (van cada 12 mts lineales, si en ese lugar no se encuentra el poste grueso).
     D. Informar la cantidad de varillas (van cada 2 mts lineales).
     E. Informar la cantidad de alambre alta resistencia 17/15 considerando 7 hilos.
 
     EJ 36 MTS X 24 MTS 
-    (G)Poste Quebracho Grueso de 2.4 mts
-    (V)Poste Quebracho Fino de 2.2 mts
-    (F)Varillas
-    
+    (G)Poste Quebracho Grueso de 2.4 mts -4
+    (F)Poste Quebracho Fino de 2.2 mts -6
+    (V)Varillas -50
+
     G V V V V V F V V V V V F V V V V V G
     V                                   V
     V                                   V
@@ -63,7 +63,27 @@ class App(customtkinter.CTk):
         self.btn_calcular.grid(row=3, pady=10, columnspan=2, sticky="nsew")
 
     def btn_calcular_on_click(self):
-        pass
+        largo = self.txt_largo.get()
+        ancho = self.txt_ancho.get()
+
+        largo = int(largo)
+        ancho = int(ancho)
+
+        metros_cuadrados = largo * ancho
+        metros_lineales = largo * 2 + ancho * 2
+
+        cantidad_de_G = metros_lineales / 250 + 4
+        cantidad_de_G = round(cantidad_de_G,0)
+        cantidad_de_F = metros_lineales / 12 - cantidad_de_G
+        cantidad_de_F = round(cantidad_de_F,0)
+        cantidad_de_V = metros_lineales / 2 - cantidad_de_G - cantidad_de_F
+        cantidad_de_V = round(cantidad_de_V,0)
+
+        alambre = metros_lineales * 7 
+        alambre = int(alambre)
+
+        texto = f"Los metros cuadrados del terreno son: {metros_cuadrados}, Los metros lineales del perimetro son: {metros_lineales}, La cantidad de postes de quebracho Grueso son: {cantidad_de_G}, La cantidad de postes de quebracho Fino son: {cantidad_de_F}, La cantidad de varillas son: {cantidad_de_V} y la cantidad de alambre necesario es de: {alambre} metros."
+        alert("TP 3", texto)
 
 
 if __name__ == "__main__":
