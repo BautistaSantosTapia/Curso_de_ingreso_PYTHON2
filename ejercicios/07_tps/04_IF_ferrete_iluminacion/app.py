@@ -45,7 +45,7 @@ class App(customtkinter.CTk):
         precio = 800
         resultado = None
 
-        if lamparitas >= 6:
+        """if lamparitas >= 6:
             resultado = lamparitas * precio
             descuento = resultado * 50 / 100
             resultado_final = resultado - descuento
@@ -86,7 +86,58 @@ class App(customtkinter.CTk):
                                         resultado_final = resultado - descuento
                                     else:
                                         if lamparitas < 3:
-                                            resultado_final = lamparitas * precio
+                                            resultado_final = lamparitas * precio"""
+
+        match lamparitas:
+            case 6:
+                resultado = lamparitas * precio
+                descuento = resultado * 50 / 100
+                resultado_final = resultado - descuento
+            case 5:
+                if empresa == "ArgentinaLuz":
+                    resultado = lamparitas * precio
+                    descuento = resultado * 40 / 100
+                    resultado_final = resultado - descuento
+                else:
+                    if empresa != "ArgentinaLuz":
+                        resultado = lamparitas * precio
+                        descuento = resultado * 30 / 100
+                        resultado_final = resultado - descuento
+            case 4:
+                if empresa == "ArgentinaLuz" or empresa == "FelipeLamparas":
+                    resultado = lamparitas * precio
+                    descuento = resultado * 25 / 100
+                    resultado_final = resultado - descuento
+                else:
+                    if empresa != "ArgentinaLuz" and empresa != "FelipeLamparas":
+                        resultado = lamparitas * precio
+                        descuento = resultado * 20 / 100
+                        resultado_final = resultado - descuento
+            case 3:
+                if empresa == "ArgentinaLuz":
+                    resultado = lamparitas * precio
+                    descuento = resultado * 15 / 100
+                    resultado_final = resultado - descuento
+                else:
+                    if empresa == "FelipeLamparas":
+                        resultado = lamparitas * precio
+                        descuento = resultado * 10 / 100
+                        resultado_final = resultado - descuento
+                    else:
+                        if empresa != "ArgentinaLuz" and empresa != "FelipeLamparas":
+                            resultado = lamparitas * precio
+                            descuento = resultado * 5 / 100
+                            resultado_final = resultado - descuento
+            case _:
+                if lamparitas < 3:
+                    resultado_final = lamparitas * precio
+                else:
+                    if lamparitas > 6:
+                        resultado = lamparitas * precio
+                        descuento = resultado * 50 / 100
+                        resultado_final = resultado - descuento
+
+# if laparitas >6 tal cosa else if laparitas < 3 tal otra cosa
 
         print(resultado_final)
         if resultado_final > 4000:
@@ -97,14 +148,7 @@ class App(customtkinter.CTk):
 
         texto = f"El importe final es de: {resultado_final}"
         alert("TP 4", texto)
-        #linea 69 84 and o or ?????????????? resultado.__str__() + " " + descuento.__str__() + " " + 
 
-"""     importe = self.txt_importe.get()
-        descuento = self.txt_descuento.get()
-        resultado = int(importe) * int(descuento) / 100
-        resultado_con_descuento = int(importe) - int(resultado) 
-        alert("Ejercicio 10", "El importe tras el descuento es: " + resultado_con_descuento.__str__())
-"""
         
     
 if __name__ == "__main__":
