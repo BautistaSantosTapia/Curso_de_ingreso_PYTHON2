@@ -34,7 +34,11 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        nombre = prompt("Ejercicio 4","Escribi tu nombre")
+        respuesta = nombre
+        self.txt_nombre.delete(0,999)
+        self.txt_nombre.insert(0,respuesta)
+        # pongo un nombre en el prompt y ese nombre se tiene que mostrar en el label de antes
         
     
 if __name__ == "__main__":

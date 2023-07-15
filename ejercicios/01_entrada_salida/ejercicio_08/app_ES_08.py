@@ -41,7 +41,10 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        primer_numero = self.txt_operador_a.get()
+        segundo_numero = self.txt_operador_b.get()
+        resultado_resto = int(primer_numero) % int(segundo_numero)
+        alert("Ejercicio 8", "El resto de dividir " + primer_numero + " por " + segundo_numero + " es: " + resultado_resto.__str__())
         
         
     
