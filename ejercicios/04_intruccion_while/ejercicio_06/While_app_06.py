@@ -1,4 +1,4 @@
-import tkinter
+import tkinter 
 from tkinter.messagebox import showinfo as alert
 from tkinter.messagebox import askyesno as question
 from tkinter.simpledialog import askstring as prompt
@@ -31,8 +31,23 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        resultado_suma = 0
+        cantidad = 0
 
+        while cantidad < 5:
+            numero = int(prompt("Ejercicio 6", "Ingresa un numero:"))
+            resultado_suma = resultado_suma + numero 
+            cantidad = cantidad + 1
+
+        promedio = resultado_suma / cantidad
+        
+        self.txt_suma_acumulada.delete(0,999)# END
+        self.txt_suma_acumulada.insert(0,resultado_suma)
+        
+        self.txt_promedio.delete(0,999)# END
+        self.txt_promedio.insert(0,promedio)
+
+        alert("Ejercicio 6", f"El promedio es de {promedio} y la suma da {resultado_suma}.")
     
 if __name__ == "__main__":
     app = App()

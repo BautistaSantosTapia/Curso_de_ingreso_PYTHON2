@@ -24,8 +24,12 @@ class App(customtkinter.CTk):
         
     
     def btn_pedir_clave_on_click(self):
-        pass
-    
+        contraseña = prompt("Ejercicio 3", "Ingresa la contraseña correcta:")
+
+        while contraseña != "utn750":
+            contraseña = prompt("Ejercicio 3", "Asegurece de que la contraseña sea la correcta:")
+
+        alert("Ejercicio 3", "La contraseña es correcta")
     
 if __name__ == "__main__":
     app = App()
