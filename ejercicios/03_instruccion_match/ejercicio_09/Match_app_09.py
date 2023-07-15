@@ -52,8 +52,58 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
-            
+        estacion = self.combobox_estaciones.get()
+        lugar = self.combobox_destino.get()
+
+        texto = None
+        precio_base = 15000
+
+        match estacion:
+            case "Invierno":
+                if lugar == "Bariloche":
+                    aumento = precio_base * 20 / 100
+                    precio_final = precio_base + aumento
+
+                elif lugar == "Cataratas" or lugar == "Córdoba":
+                    descuento = precio_base * 10 / 100
+                    precio_final = precio_base - descuento
+
+                elif lugar == "Mar del plata":
+                    descuento = precio_base * 20 / 100
+                    precio_final = precio_base - descuento
+
+            case "Verano":
+                if lugar == "Bariloche":
+                    descuento = precio_base * 20 / 100
+                    precio_final = precio_base - descuento
+
+                elif lugar == "Cataratas" or lugar == "Córdoba":
+                    aumento = precio_base * 10 / 100
+                    precio_final = precio_base + aumento
+
+                elif lugar == "Mar del plata":
+                    aumento = precio_base * 20 / 100
+                    precio_final = precio_base + aumento
+
+            case "Primavera" | "Otoño":
+                if lugar == "Bariloche":
+                    aumento = precio_base * 10 / 100
+                    precio_final = precio_base + aumento
+
+                elif lugar == "Cataratas":
+                    aumento = precio_base * 10 / 100
+                    precio_final = precio_base + aumento
+
+                elif lugar == "Mar del plata":
+                    aumento = precio_base * 10 / 100
+                    precio_final = precio_base + aumento
+
+                elif lugar == "Córdoba":
+                    precio_final = precio_base
+
+        texto = f"El precio final que tenes que pagar para ir a {lugar} en {estacion} es de: ${precio_final}"
+
+        alert("Ejercicio 9", texto)
     
 if __name__ == "__main__":
     app = App()
