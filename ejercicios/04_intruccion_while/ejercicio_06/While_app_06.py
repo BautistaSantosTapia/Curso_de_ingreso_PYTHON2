@@ -41,10 +41,10 @@ class App(customtkinter.CTk):
 
         promedio = resultado_suma / cantidad
         
-        self.txt_suma_acumulada.delete(0,999)# END
+        self.txt_suma_acumulada.delete(0,tkinter.END)
         self.txt_suma_acumulada.insert(0,resultado_suma)
         
-        self.txt_promedio.delete(0,999)# END
+        self.txt_promedio.delete(0,tkinter.END)
         self.txt_promedio.insert(0,promedio)
 
         alert("Ejercicio 6", f"El promedio es de {promedio} y la suma da {resultado_suma}.")

@@ -32,24 +32,30 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        resultado_suma = 0
-        cantidad = 0
+        resultado_suma = 0 #acumulador
+        cantidad = 0 #contador
         numero = 0
 
-        while numero != "":
-            numero = int(prompt("Ejercicio 7", "Ingresa un numero:"))
-            if numero == "":
-                numero = 0
+        while numero != None:
+
+            numero = prompt("Ejercicio 7", "Ingresa un numero:")
+
+            if numero == None:
+                break
+
+            numero = int(numero)
+
             resultado_suma = resultado_suma + numero
             cantidad = cantidad + 1
             print("--", f"{resultado_suma},{cantidad}")
 
+
         promedio = resultado_suma / cantidad
         
-        self.txt_suma_acumulada.delete(0,999)# END
+        self.txt_suma_acumulada.delete(0,tkinter.END)
         self.txt_suma_acumulada.insert(0,resultado_suma)
         
-        self.txt_promedio.delete(0,999)# END
+        self.txt_promedio.delete(0,tkinter.END)
         self.txt_promedio.insert(0,promedio)
 
         alert("Ejercicio 7", f"El promedio es de {promedio} y la suma da {resultado_suma}.")

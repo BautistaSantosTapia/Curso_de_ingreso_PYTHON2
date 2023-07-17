@@ -50,8 +50,48 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        pass
+        apellido = prompt("TP 5", "Ingrese su apellido:")
+        while apellido.isdigit() or apellido == None or len(apellido) < 2:
+            apellido = prompt("TP 5", "Ingrese su apellido correctamente:")
 
+
+        edad = prompt("TP 5", "Ingrese su edad:")
+        edad = int(edad)
+        while edad == None or (edad < 18 or edad > 90):
+            edad = prompt("TP 5","Ingrese su edad correctamente")
+            edad = int(edad)
+
+
+        estado_civil = prompt("TP 5", "Ingrese su estado civil (Soltero/a, Casado/a, Divorciado/a, Viudo/a):")
+        estado_civil = estado_civil.lower()
+        estado_civil = estado_civil.capitalize()
+        while (estado_civil != "Soltero/a" and estado_civil != "Casado/a" and estado_civil != "Divorciado/a" and estado_civil != "Viudo/a") or estado_civil == None:
+            estado_civil = prompt("TP 5", "Ingrese su estado civil correctamenta (Soltero/a, Casado/a, Divorciado/a, Viudo/a):")
+            estado_civil = estado_civil.lower()
+            estado_civil = estado_civil.capitalize()
+
+
+        numero_de_legajo = prompt("TP 5", "Ingrese su numero de legajo (4 digitos):")
+        numero_de_legajo = numero_de_legajo.lstrip ("0")
+        while not numero_de_legajo.isdigit() or numero_de_legajo == None or len(numero_de_legajo) > 4 or len(numero_de_legajo) < 4:
+            numero_de_legajo = prompt("TP 5", "Ingrese su numero de legajo correctamente (4 digitos):") 
+            numero_de_legajo = numero_de_legajo.lstrip ("0")
+            
+
+
+        self.txt_apellido.delete(0,tkinter.END)
+        self.txt_apellido.insert(0,apellido)
+
+        self.txt_edad.delete(0,tkinter.END)
+        self.txt_edad.insert(0,edad)
+
+        #self.combobox_tipo.delete(0,tkinter.END)
+        self.combobox_tipo.set(estado_civil)
+
+        self.txt_legajo.delete(0,tkinter.END)
+        self.txt_legajo.insert(0,numero_de_legajo)
+        
+        alert("Ejercicio 7", f"Tu apelido es {apellido}, tu edad es {edad} anos, tu estado es {estado_civil} y su numero de legajo es {numero_de_legajo}.")
 
 if __name__ == "__main__":
     app = App()
