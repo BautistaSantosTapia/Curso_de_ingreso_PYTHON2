@@ -60,7 +60,7 @@ class App(customtkinter.CTk):
         while edad == None or (edad < 18 or edad > 90):
             edad = prompt("TP 5","Ingrese su edad correctamente")
             edad = int(edad)
-
+        #edad
 
         estado_civil = prompt("TP 5", "Ingrese su estado civil (Soltero/a, Casado/a, Divorciado/a, Viudo/a):")
         estado_civil = estado_civil.lower()

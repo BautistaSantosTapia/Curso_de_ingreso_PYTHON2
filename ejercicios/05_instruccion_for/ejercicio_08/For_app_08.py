@@ -21,8 +21,33 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        numero = prompt("Ejercicio 8", "Ingresa un numero:")
+        numero = int(numero)
+        print(numero)
     
+        cantidad_primos = 0
+        cantidad_no_primos = 0
+        
+        for valor in range(2,numero + 1):
+            if numero % valor == 0:
+                print(f"no es primo {valor}")
+                cantidad_no_primos = cantidad_no_primos + 1
+            else:
+                print(f"es primo {valor}")
+                cantidad_primos = cantidad_primos + 1
+                
+                
+        if cantidad_no_primos >= 2:
+            print("respuesta final: no es primo")
+            texto = "Respuesta final: No es primo"
+        else:
+            print("respuesta final: es primo")
+            texto = "Respuesta final: Es primo"
+        
+
+        alert("Ejercicio 8", texto)
+
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
