@@ -24,7 +24,13 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
+        lista = self.lista_datos
+        #lista.append(100)
+        suma_numeros = 0
+        for numero in lista:
+            suma_numeros = suma_numeros + numero
+            
+        alert("Ejercicio 5", f"La suma de los numeros es: {suma_numeros}")
     
 if __name__ == "__main__":
     app = App()

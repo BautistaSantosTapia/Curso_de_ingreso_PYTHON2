@@ -27,11 +27,18 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        alert("Ejercicio 2", f"Los numeros de la lista son: {self.lista_datos}")
         
     def btn_cargar_on_click(self):
-        pass
-    
+        lista = self.lista_datos
+        for valor in range(3):
+            numero = prompt("Ejercicio 2", "Ingresa un numero")
+            numero = int(numero)
+            lista.append(numero)
+
+        print(lista)
+
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
