@@ -22,12 +22,12 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pregunta = question("Ejercicio 5", "¿Desea continuar?")
-        #for e in pregunta:
-        """if pregunta == True:
-            continue
-        else:
-            break"""
+        for _ in range(99): #iter(int, 1) es una forma de hacer un for infinito
+            pregunta = question("Ejercicio 5", "¿Desea continuar?")
+            if pregunta == True:
+                continue
+            else:
+                break
 
     
 if __name__ == "__main__":

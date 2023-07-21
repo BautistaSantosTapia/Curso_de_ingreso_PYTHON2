@@ -69,7 +69,7 @@ class App(customtkinter.CTk):
             estado_civil = prompt("TP 5", "Ingrese su estado civil correctamenta (Soltero/a, Casado/a, Divorciado/a, Viudo/a):")
             estado_civil = estado_civil.lower()
             estado_civil = estado_civil.capitalize()
-
+        #tipo
 
         numero_de_legajo = prompt("TP 5", "Ingrese su numero de legajo (4 digitos):")
         numero_de_legajo = numero_de_legajo.lstrip ("0")

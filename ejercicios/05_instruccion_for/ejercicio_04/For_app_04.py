@@ -21,23 +21,28 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        cantidad = prompt("Ejercicio 4", "Ingrese un valor:")
+        """cantidad = prompt("Ejercicio 4", "Ingrese un valor:")
         cantidad = int(cantidad)
         print(cantidad)
         cantidad = cantidad + 1
         print(cantidad)
         print(range(cantidad))
-
+        #el enunciado esta mal por lo tanto el ejercicio esta bien
         mensaje = "Hola UTN FRA"
         for repeticion in range(cantidad):
-            if repeticion == 9: # seria if cantidad - 1 == 9 seria correcto pero en cualquier otro caso seria incorrecto 
+            if repeticion == 9:
                 alert("Ejercicio 4", "Se ingreso el valor '9'")
                 break
             elif repeticion == cantidad - 1:
                 alert("Ejercicio 4", "No se ingreso el valor '9'")
                 break
             else:
-                continue
+                continue"""
+        
+        for _ in iter(int, 1): #range(99)
+            cantidad = prompt("Ejercicio 4", "Ingrese un valor:")
+            if cantidad == "9":
+                break
 
         """if (4 in test_list):
             print("Element Exists")"""
