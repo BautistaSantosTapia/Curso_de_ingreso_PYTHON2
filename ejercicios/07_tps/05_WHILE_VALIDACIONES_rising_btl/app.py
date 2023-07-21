@@ -51,25 +51,33 @@ class App(customtkinter.CTk):
 
     def btn_validar_on_click(self):
         apellido = prompt("TP 5", "Ingrese su apellido:")
-        while apellido.isdigit() or apellido == None or len(apellido) < 2:
+        while (apellido == None or apellido == "") or not apellido.isalpha() or len(apellido) < 2:
             apellido = prompt("TP 5", "Ingrese su apellido correctamente:")
 
 
         edad = prompt("TP 5", "Ingrese su edad:")
-        edad = int(edad)
-        while edad == None or (edad < 18 or edad > 90):
+        while edad == None or not edad.isdigit() or int(edad) < 18 or int(edad) > 90:
             edad = prompt("TP 5","Ingrese su edad correctamente")
-            edad = int(edad)
-        #edad
+        edad = int(edad)
+
 
         estado_civil = prompt("TP 5", "Ingrese su estado civil (Soltero/a, Casado/a, Divorciado/a, Viudo/a):")
         estado_civil = estado_civil.lower()
         estado_civil = estado_civil.capitalize()
-        while (estado_civil != "Soltero/a" and estado_civil != "Casado/a" and estado_civil != "Divorciado/a" and estado_civil != "Viudo/a") or estado_civil == None:
+        while (estado_civil == None or not estado_civil.isalpha()) or estado_civil != "Soltero" and estado_civil != "Soltera" and estado_civil != "Casado" and estado_civil != "Casada" and estado_civil != "Divorciado" and estado_civil != "Divorciada" and estado_civil != "Viudo" and estado_civil != "Viuda":
             estado_civil = prompt("TP 5", "Ingrese su estado civil correctamenta (Soltero/a, Casado/a, Divorciado/a, Viudo/a):")
             estado_civil = estado_civil.lower()
             estado_civil = estado_civil.capitalize()
-        #tipo
+
+        if estado_civil == "Soltera" or estado_civil == "Soltero":
+            estado_civil = "Soltero/a"
+        elif estado_civil == "Casada" or estado_civil == "Casado":
+            estado_civil = "Casado/a"
+        elif estado_civil == "Divorciada" or estado_civil == "Divorciado":
+            estado_civil = "Divorciado/a"
+        else:
+            estado_civil = "Viudo/a"
+        
 
         numero_de_legajo = prompt("TP 5", "Ingrese su numero de legajo (4 digitos):")
         numero_de_legajo = numero_de_legajo.lstrip ("0")
@@ -85,7 +93,6 @@ class App(customtkinter.CTk):
         self.txt_edad.delete(0,tkinter.END)
         self.txt_edad.insert(0,edad)
 
-        #self.combobox_tipo.delete(0,tkinter.END)
         self.combobox_tipo.set(estado_civil)
 
         self.txt_legajo.delete(0,tkinter.END)
