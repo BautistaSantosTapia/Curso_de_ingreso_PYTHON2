@@ -48,3 +48,107 @@ if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
     app.mainloop()
+
+
+"""
+contador = 0
+        puntoA = 0
+        bandera_del_primero = True
+        numero = 0
+        numero_menor = 0
+        totalf = 0
+        totalm = 0
+        totalnb = 0
+        acumuladorf = 0
+        acumuladorm = 0
+        acumuladornb = 0
+        genteasp = 0
+        gentejs = 0
+        gentepython = 0
+        porcentajef = 0
+        porcentajem = 0
+        porcentajenb = 0
+
+        for contador in range(0,2):
+            nombre = prompt(title="nombre", prompt= "ingrese su nombre")
+            while nombre == "" and  nombre.isdigit():
+                nombre = prompt(title="Error", prompt= "ingrese su nombre devuelta por favor")
+            
+            genero = prompt(title="genero",prompt="ingrese su genero = F, M o NB")
+            while genero != "F" and genero != "M" and genero != "NB":
+                genero = prompt(title= "error", prompt="no introdujo F, M o NB")   
+            
+            tecnologia=prompt(title= "tecnologia", prompt="introduzca la tecnologia con la que trabaja, PYTHON, JS o ASP.NET")
+            while tecnologia != "PYTHON" and tecnologia != "JS" and tecnologia != "ASP.NET":
+                tecnologia = prompt(title= "error", prompt="no introdujo PYTHON, JS o ASP.NET")
+            
+            puesto = prompt(title="puesto",prompt="ingrese el puesto al que se postula = Jr,Ssr o Sr")
+            while puesto != "Jr" and puesto != "Ssr" and puesto != "Sr":
+                puesto = prompt(title= "error", prompt="no introdujo Jr,Ssr o Sr ")
+            
+            while True:
+                edad = prompt(title="edad",prompt="ingrese su edad")
+                if (edad !=None and edad.isdigit()):
+                    edadinteada = int(edad)
+                    if edadinteada < 18:
+                        edad = prompt(title="ERROR",prompt="ERROR , Debe ser mayor a 18")
+                    else:
+                        break
+                else:
+                    edad = prompt(title="ERROR",prompt="ERROR , ingrese una edad correcta")
+            
+            if edad >25 and edad < 40 and tecnologia == "ASP.NET" or tecnologia == "JS" and puesto == "Ssr" and genero == "NB":
+                puntoA = puntoA + 1     
+
+            if puesto == "Jr":
+                if bandera_del_primero == True:
+                        numero_menor = edad 
+                        nombre_menor = nombre
+                        bandera_del_primero = False
+
+            if puesto == "Jr":
+                if edad < numero_menor:
+                    numero_menor = edad
+                    nombre_menor = nombre
+                    
+
+            match genero:
+                case "F":
+                    totalf = totalf + edad
+                    acumuladorf = acumuladorf +1
+                case "M":
+                    totalm = totalm + edad
+                    acumuladorm = acumuladorm +1
+                case "NB":
+                    totalnb = totalnb + edad 
+                    acumuladornb = acumuladornb + 1
+
+            match puesto:
+                case "JS":
+                    gentejs = gentejs + 1
+                case "ASP.NET":
+                    genteasp = genteasp + 1
+                case "PYTHON":
+                    gentepython = gentepython + 1
+            
+            if gentejs > genteasp and gentejs > gentepython:
+                mayortecnologia = "JS"
+            elif genteasp > gentejs and genteasp > gentepython:
+                mayortecnologia = "ASP.NET"
+            elif gentepython > gentejs and gentepython > genteasp:
+                mayortecnologia = "PYTHON"
+        
+        promediof = totalf / acumuladorf
+
+        promediom = totalm / acumuladorm
+
+        promedionb = totalnb / acumuladornb
+
+        porcentajem = (10 * acumuladorm) / 100
+
+        porcentajef = (10 * acumuladorf) / 100
+
+        porcentajenb = (10 * acumuladornb) / 100
+
+        alert ("hola", "hay "+ str(puntoA) +" de gente y " + str(nombre_menor) + " es el mas joven y " + str(promediof) + " es el promedio de edad de las mujeres y " + str(promediom) +" es el promedio de edad de los hombres y " + str(promedionb) + " es el promedio de edad no binario, la tecnologia mas usada es " + mayortecnologia +" el porcentaje de mujeres es " + porcentajef +"% , el porcentaje de hombres es " + porcentajem +"% y el porcentaje de no binarios es de " + porcentajenb + "%." )
+"""
