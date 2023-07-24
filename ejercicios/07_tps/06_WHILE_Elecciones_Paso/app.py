@@ -66,6 +66,7 @@ class App(customtkinter.CTk):
                 votos = prompt("TP 6", "Ingrese la cantidad de votos correctamente")
             votos = int(votos)
 
+
             if bandera == True:
                 votos_max = votos
                 votos_min = votos
@@ -86,10 +87,10 @@ class App(customtkinter.CTk):
             cantidad_candidatos = cantidad_candidatos + 1
             suma_votos = suma_votos + votos
 
-
             respuesta = question("TP 6", "Desea continuar?")
             if respuesta == False:
                 break
+
 
         if cantidad_candidatos > 0:
             promedio_edades = suma_edades / cantidad_candidatos
@@ -98,9 +99,9 @@ class App(customtkinter.CTk):
 
         alert("TP 6", f"\n\
             El candidato con mas votos fue {nombre_max} con {votos_max} votos.\n\
-            El candidato con menos votos fue {nombre_min} de {edad_min} anos con {votos_min} votos. \n\
-            El promedio de edad de los candidatos fue {promedio_edades} anos. \n\
-            El total de votos emitidos fue de {suma_votos} votos.          ")
+            El candidato con menos votos fue {nombre_min} de {edad_min} anos con {votos_min} votos.\n\
+            El promedio de edad de los candidatos fue {promedio_edades} anos.\n\
+            El total de votos emitidos fue de {suma_votos} votos.")
 
         print(votos_max)
         print(nombre_max)
