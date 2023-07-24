@@ -98,7 +98,7 @@ class App(customtkinter.CTk):
         self.txt_legajo.delete(0,tkinter.END)
         self.txt_legajo.insert(0,numero_de_legajo)
         
-        alert("Ejercicio 7", f"Tu apelido es {apellido}, tu edad es {edad} anos, tu estado es {estado_civil} y su numero de legajo es {numero_de_legajo}.")
+        alert("TP 5", f"Tu apelido es {apellido}, tu edad es {edad} anos, tu estado es {estado_civil} y su numero de legajo es {numero_de_legajo}.")
 
 if __name__ == "__main__":
     app = App()

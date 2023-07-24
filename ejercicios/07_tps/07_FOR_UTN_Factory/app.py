@@ -41,7 +41,43 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        pass
+        """ Nombre
+            Edad (mayor de edad)
+            Género (F-M-NB)
+            Tecnología (PYTHON - JS - ASP.NET)
+            Puesto (Jr - Ssr - Sr)"""
+        for postulantes in range(10):
+
+            nombre = prompt("TP 7", "Ingrese su nombre")
+            while (nombre == None or nombre == "") or not nombre.isalpha() or len(nombre) < 2:
+                nombre = prompt("TP 7", "Ingrese su nombre correctamente:")
+
+
+            edad = prompt("TP 7", "Ingrese su edad")
+            while edad == None or not edad.isdigit() or int(edad) < 18 or int(edad) > 120:
+                edad = prompt("TP 7","Ingrese su edad correctamente")
+            edad = int(edad)
+
+
+            genero = prompt("TP 7", "Ingrese su genero (M / F / NB)")
+            genero = genero.upper()
+            while (genero == None or not genero.isalpha()) or (genero != "M" and genero != "F" and genero != "NB"):
+                genero = prompt("TP 7","Ingrese su genero correctamente (Masculino(M) / Femenino(F) / No Binario(NB))")
+            genero = genero.upper()
+
+
+            tecnologia = prompt("TP 7", "Ingrese la tecnologia (JS / PYTHON / ASP.NET)")
+            tecnologia = tecnologia.upper()
+            while (tecnologia == None or not tecnologia.isalpha()) or (tecnologia != "JS" and tecnologia != "PYTHON" and tecnologia != "ASP.NET"):
+                tecnologia = prompt("TP 7","Ingrese la tecnologia correctamente (JS / PYTHON / ASP.NET)")
+            tecnologia = tecnologia.upper()
+
+
+            puesto = prompt("TP 7", "Ingrese su puesto (Jr / Ssr / Sr)")
+            puesto = puesto.upper()
+            while (puesto == None or not puesto.isalpha()) or (puesto != "JR" and puesto != "SSR" and puesto != "SR"):
+                puesto = prompt("TP 7", "Ingrese su puesto correctamente (Jr / Ssr / Sr)")
+            puesto = puesto.upper()
 
 
 if __name__ == "__main__":
