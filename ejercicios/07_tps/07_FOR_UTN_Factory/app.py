@@ -41,51 +41,159 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        """ Nombre
-            Edad (mayor de edad)
-            Género (F-M-NB)
-            Tecnología (PYTHON - JS - ASP.NET)
-            Puesto (Jr - Ssr - Sr)"""
+
+        #a. Cantidad de postulantes de genero no binario (NB) que programan en ASP.NET o JS cuya edad este entre 25 y 40, que se hayan postulado para un puesto Ssr.
+        cantidad_postulante_a = 0
+
+        #b. Nombre del postulante Jr con menor edad.
+        edad_min_jr = 0
+        nombre_min_jr = 0
+        bandera = True
+
+        #c. Promedio de edades por género.
+        edad_m = 0
+        cantidad_m = 0
+        edad_f = 0
+        cantidad_f = 0
+        edad_nb = 0
+        cantidad_nb = 0
+
+        #d. Tecnologia con mas postulantes (solo hay una). 
+        contador_js = 0
+        contador_py = 0
+        contador_asp = 0
+
+        #e. Porcentaje de postulantes de cada genero.
+        cantidad_postulantes = 0
+
         for postulantes in range(10):
 
             nombre = prompt("TP 7", "Ingrese su nombre")
             while (nombre == None or nombre == "") or not nombre.isalpha() or len(nombre) < 2:
                 nombre = prompt("TP 7", "Ingrese su nombre correctamente:")
 
-
             edad = prompt("TP 7", "Ingrese su edad")
             while edad == None or not edad.isdigit() or int(edad) < 18 or int(edad) > 120:
                 edad = prompt("TP 7","Ingrese su edad correctamente")
             edad = int(edad)
 
-
             genero = prompt("TP 7", "Ingrese su genero (M / F / NB)")
             genero = genero.upper()
-            while (genero == None or not genero.isalpha()) or (genero != "M" and genero != "F" and genero != "NB"):
+            while (genero == None) or (genero != "M" and genero != "F" and genero != "NB"):
                 genero = prompt("TP 7","Ingrese su genero correctamente (Masculino(M) / Femenino(F) / No Binario(NB))")
-            genero = genero.upper()
-
+                genero = genero.upper()
 
             tecnologia = prompt("TP 7", "Ingrese la tecnologia (JS / PYTHON / ASP.NET)")
             tecnologia = tecnologia.upper()
-            while (tecnologia == None or not tecnologia.isalpha()) or (tecnologia != "JS" and tecnologia != "PYTHON" and tecnologia != "ASP.NET"):
+            while (tecnologia == None) or (tecnologia != "JS" and tecnologia != "PYTHON" and tecnologia != "ASP.NET"):
                 tecnologia = prompt("TP 7","Ingrese la tecnologia correctamente (JS / PYTHON / ASP.NET)")
-            tecnologia = tecnologia.upper()
-
+                tecnologia = tecnologia.upper()
 
             puesto = prompt("TP 7", "Ingrese su puesto (Jr / Ssr / Sr)")
             puesto = puesto.upper()
-            while (puesto == None or not puesto.isalpha()) or (puesto != "JR" and puesto != "SSR" and puesto != "SR"):
+            while (puesto == None) or (puesto != "JR" and puesto != "SSR" and puesto != "SR"):
                 puesto = prompt("TP 7", "Ingrese su puesto correctamente (Jr / Ssr / Sr)")
-            puesto = puesto.upper()
+                puesto = puesto.upper()
 
+
+            if genero == "NB":
+                if tecnologia == "ASP.NET" or tecnologia == "JS":
+                    if edad >= 25 and edad <= 40:
+                        if puesto == "SSR":
+                            cantidad_postulante_a = cantidad_postulante_a + 1
+
+            if puesto == "JR":
+                if bandera == True:
+                    edad_min_jr = edad
+                    nombre_min_jr = nombre
+                    bandera == False
+                elif edad_min_jr > edad:
+                    edad_min_jr = edad
+                    nombre_min_jr = nombre
+
+            if genero == "F":
+                edad_f = edad_f + edad
+                cantidad_f = cantidad_f + 1
+            elif genero == "M":
+                edad_m = edad_m + edad
+                cantidad_m = cantidad_m + 1
+            elif genero == "NB":
+                edad_nb = edad_nb + edad
+                cantidad_nb = cantidad_nb + 1
+
+            if tecnologia == "JS":
+                contador_js = contador_js + 1
+            elif tecnologia == "PYTHON":
+                contador_py = contador_py + 1
+            elif tecnologia == "ASP.NET":
+                contador_asp = contador_asp + 1
+
+
+
+            cantidad_postulantes = cantidad_postulantes + 1
+
+
+        if cantidad_m > 0:
+            promedio_m = edad_m / cantidad_m
+            porcentaje_m = cantidad_m / cantidad_postulantes * 100
+        else:
+            print("No se ingresaron masculinos")
+
+        if cantidad_nb > 0:
+            promedio_nb = edad_nb / cantidad_nb
+            porcentaje_nb = cantidad_nb / cantidad_postulantes * 100
+        else:
+            print("No se ingresaron no binarios")
+
+        if cantidad_f > 0:
+            promedio_f = edad_f / cantidad_f
+            porcentaje_f = cantidad_f / cantidad_postulantes * 100
+        else:
+            print("No se ingresaron femeninos")
+
+
+        if contador_asp > contador_js and contador_asp > contador_py:
+            mensaje_tecno = f"La tecnologia con mas postulantes es ASP.NET con {contador_asp} postulante/s"
+        elif contador_js > contador_py:
+            mensaje_tecno = f"La tecnologia con mas postulantes es JS con {contador_js} postulante/s"
+        elif contador_py != contador_asp and contador_py != contador_js:
+            mensaje_tecno = f"La tecnologia con mas postulantes es PYTHON con {contador_py} postulante/s"
+        else:
+            mensaje_tecno = f"Hay empate entre las tecnologias con mas postulantes"
+
+        #a
+        print(f"La cantidad de postulantes que cumplen las condiciones del punto 'a' son: {cantidad_postulante_a}")
+
+        #b
+        print(f"El nombre del postulante mas joven para el puesto Jr es: {nombre_min_jr}")
+
+        #c
+        print(f"\n\
+              El promedio de edad de los postulantes masculinos es de: {promedio_m}\n\
+              El promedio de edad de las postulantes femeninas es de: {promedio_f}\n\
+              El promedio de edad de los postulantes no binarios es de: {promedio_nb}")
+
+        #d
+        print(mensaje_tecno)
+
+        #e
+        print(f"\n\
+              El porcentaje de postulaciones masculinas es de: {porcentaje_m}% \n\
+              El porcentaje de postulaciones femeninas es de: {porcentaje_f}% \n\
+              El porcentaje de postulaciones no binarias es de: {porcentaje_nb}% ")
+
+        #print(cantidad_f)
+        #print(cantidad_m)
+        #print(cantidad_nb)
+       
+       
 
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
     app.mainloop()
 
-
+# otra forma de hacerlo
 """
 contador = 0
         puntoA = 0
