@@ -44,7 +44,82 @@ class App(customtkinter.CTk):
         self.lista = []
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        lista_positivos = []
+        lista_negativos = []
+        lista_ceros = []
+        suma_negativos = 0
+        suma_positivos = 0
+        minimo_negativo = None
+        maximo_positivo = None
+        bandera = True
+
+        while True:
+
+            numero = prompt("TP 8", "Ingrese un numero")
+            """while numero == None or not numero.isdigit():
+                numero = prompt("TP 8", "Ingrese el numero correctamente")"""
+            numero = int(numero)
+
+            if bandera == True:
+                minimo_negativo = numero
+                maximo_positivo = numero
+                bandera = False
+            elif numero > maximo_positivo:
+                maximo_positivo = numero
+            elif numero < minimo_negativo:
+                minimo_negativo = numero
+            
+            
+            if numero > 0:
+                lista_positivos.append(numero)
+            elif numero < 0:
+                lista_negativos.append(numero)
+            else:
+                lista_ceros.append(numero)
+
+
+            respuesta = question("TP 8", "Desea continuar?")
+            if respuesta == False:
+                break
+
+        for numero in lista_negativos:
+            suma_negativos = suma_negativos + numero
+
+
+        for numero in lista_positivos:
+            suma_positivos = suma_positivos + numero
+
+        #a
+        print(suma_negativos)
+        #b
+        print(suma_positivos)
+        #c
+        cantidad_positivos = len(lista_positivos)
+        print(cantidad_positivos)
+        #d
+        cantidad_negativos = len(lista_negativos)
+        print(cantidad_negativos)
+        #e
+        cantidad_ceros = len(lista_ceros)
+        print(cantidad_ceros)
+        #f
+        print(minimo_negativo)
+        #g
+        print(maximo_positivo)
+        #h
+        promedio_negativos = suma_negativos / cantidad_negativos
+        print(promedio_negativos)
+    """
+    *a. La suma acumulada de los negativos
+    *b. La suma acumulada de los positivos
+    *c. Cantidad de números positivos ingresados
+    *d. Cantidad de números negativos ingresados
+    *e. Cantidad de ceros
+    *f. El minimo de los negativos
+    *g. El maximo de los positivos
+    *h. El promedio de los negativos"""
+
+
 
     def btn_mostrar_estadisticas_on_click(self):
         pass
