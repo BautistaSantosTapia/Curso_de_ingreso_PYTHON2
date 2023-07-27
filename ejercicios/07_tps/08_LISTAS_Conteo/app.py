@@ -52,31 +52,55 @@ class App(customtkinter.CTk):
         minimo_negativo = None
         maximo_positivo = None
         bandera = True
+        numero_valido = False
 
         while True:
-
+                
             numero = prompt("TP 8", "Ingrese un numero")
-            """while numero == None or not numero.isdigit():
-                numero = prompt("TP 8", "Ingrese el numero correctamente")"""
-            numero = int(numero)
+            if numero:
+                contador_menos = 0
+                for letra in numero:
+                    if not letra.isdecimal() and letra != "-":
+                        numero_valido = False
+                        break
+                    elif letra == "-":
+                        contador_menos = contador_menos + 1
+                        if contador_menos > 1:
+                            numero_valido = False
+                            break
+                    else:
+                        numero_valido = True
 
-            if bandera == True:
-                minimo_negativo = numero
-                maximo_positivo = numero
-                bandera = False
-            elif numero > maximo_positivo:
-                maximo_positivo = numero
-            elif numero < minimo_negativo:
-                minimo_negativo = numero
-            
-            
-            if numero > 0:
-                lista_positivos.append(numero)
-            elif numero < 0:
-                lista_negativos.append(numero)
+                if numero_valido == True:
+
+                    numero = int(numero)
+
+                    if bandera == True:
+                        minimo_negativo = numero
+                        maximo_positivo = numero
+                        bandera = False
+                    elif numero > maximo_positivo:
+                        maximo_positivo = numero
+                    elif numero < minimo_negativo:
+                        minimo_negativo = numero
+                    
+                    
+                    if numero > 0:
+                        lista_positivos.append(numero)
+                    elif numero < 0:
+                        lista_negativos.append(numero)
+                    else:
+                        lista_ceros.append(numero)
+
+            if numero_valido == True:
+                texto = "El numero es valido"
             else:
-                lista_ceros.append(numero)
+                texto = "El numero no es valido"
 
+            alert("TP 8", texto)
+            print(lista_positivos)
+            print(lista_negativos)
+            print(lista_ceros)
 
             respuesta = question("TP 8", "Desea continuar?")
             if respuesta == False:
@@ -107,17 +131,11 @@ class App(customtkinter.CTk):
         #g
         print(maximo_positivo)
         #h
-        promedio_negativos = suma_negativos / cantidad_negativos
-        print(promedio_negativos)
-    """
-    *a. La suma acumulada de los negativos
-    *b. La suma acumulada de los positivos
-    *c. Cantidad de números positivos ingresados
-    *d. Cantidad de números negativos ingresados
-    *e. Cantidad de ceros
-    *f. El minimo de los negativos
-    *g. El maximo de los positivos
-    *h. El promedio de los negativos"""
+        if cantidad_negativos > 0:
+            promedio_negativos = suma_negativos / cantidad_negativos
+            print(promedio_negativos)
+        else:
+            print("No hay negativos")
 
 
 
